@@ -30,6 +30,7 @@ const authMiddleware=(req,res,next)=>{
     }
     catch(error)
     {
+         console.log("JWT ERROR:", error.message);
         return res.status(401).json({
             success:false,
             message:"Invalid or expired token"

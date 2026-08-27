@@ -31,17 +31,17 @@ app.get("/",(req,res)=>{
 });
 
 //api routes
+app.use("/",authRoutes);
 app.use("/products",productRoutes);
 app.use("/cart",cartRoutes);
-app.use("/",authRoutes);
 
 //global error handler
 app.use((err,req,res,next)=>{
     console.error(err.stack);
-    res.status((err.status || 500).json({
+    res.status(err.status || 500).json({
         success:false,
         message:err.message || "Internal Server Error"
-    }));
+    });
 });
 
 
